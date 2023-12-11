@@ -8,6 +8,8 @@ export default class PostService {
                 _page: page
             }
         })
+        // const response = await axios.get('http://127.0.0.1:5000/tutorials')
+        // console.log(response);
         return response
     }
 }
