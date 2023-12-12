@@ -8,8 +8,16 @@ export default class PostService {
                 _page: page
             }
         })
-        // const response = await axios.get('http://127.0.0.1:5000/tutorials')
-        // console.log(response);
+        return response
+    }
+
+    static async getById(id) {
+        const response = await axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
+        return response
+    }
+
+    static async getCommentByPostId(id) {
+        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
         return response
     }
 }
