@@ -14,7 +14,6 @@ const PostIdPage = () => {
     })
     const [fetchComments, isCommentLoading, commentError] = useFetching(async (id) => {
         const response = await PostService.getCommentByPostId(id)
-        console.log(response.data);
         setComments(response.data)
     })
 
@@ -24,6 +23,7 @@ const PostIdPage = () => {
             fetchComments(params.id)
         }
     }, [])
+
     return (
         <div>
             <h1>Вы открыли страницу поста с ID = {params.id}</h1>
@@ -38,7 +38,7 @@ const PostIdPage = () => {
                 ? <Loader/>
                 : <div>
                     {comments.length && comments.map(comment =>
-                        <div style={{marginTop: 15}}>
+                        <div style={{marginTop: 15}} key={comment.id}>
                             <h5>{comment.email}</h5>
                             <div>{comment.body}</div>
                         </div>
